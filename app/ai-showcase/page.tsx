@@ -102,6 +102,11 @@ const AIShowcasePage = () => {
             </ul>
           </div>
         </div>
+
+        <footer className="text-center mt-16">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">Nguồn</h3>
+          <p className="text-slate-400">Nội dung được tạo từ NotebookLM: <a href="https://notebooklm.google.com/notebook/bb7b84b5-b541-42d8-8eda-1d4640d9e4ef" className="text-purple-400 hover:text-purple-300 underline">Xem notebook gốc</a></p>
+        </footer>
       </div>
     </div>
   );
