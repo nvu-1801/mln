@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { AreaChart, ChevronRight, Activity, Users, Globe2, BookOpen, X } from 'lucide-react';
+import { AreaChart, ChevronRight, Activity, Users, Globe2, BookOpen, X, Cpu } from 'lucide-react';
 import { useState } from 'react';
 
 export default function LandingPage() {
@@ -44,6 +44,13 @@ export default function LandingPage() {
                             <BookOpen className="w-5 h-5" />
                             Hướng dẫn Chơi
                         </button>
+                        <Link
+                            href="/ai-showcase"
+                            className="group flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold text-base transition-colors duration-300 w-full sm:w-auto"
+                        >
+                            <Cpu className="w-5 h-5" />
+                            Minh chứng AI
+                        </Link>
                     </div>
 
                     {/* Feature Highlights */}
