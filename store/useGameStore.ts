@@ -3,7 +3,7 @@ import { GameState, GameActions, TurnEffect } from '@/types/game';
 
 const INITIAL_STATE: GameState = {
     budget: 1000,
-    gdp: 5000,
+    gdp: 5000, 
     socialWelfare: 60,
     gini: 35, // Hệ số Gini an toàn
     currentYear: 2024,
