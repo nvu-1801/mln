@@ -1,0 +1,41 @@
+version: '3.8' # Phiên bản cú pháp của file compose
+
+services:
+  # Dịch vụ 1: Ứng dụng Next.js của bạn
+  web:
+    build: 
+      context: . # Chỉ đường dẫn thư mục chứa Dockerfile (ở đây là thư mục hiện tại)
+    container_name: mln_nextjs_app # Tên container cho dễ nhìn
+    ports:
+      - "3000:3000" # Map cổng 3000 máy chủ (bên trái) vào cổng 3000 container (bên phải)
+    environment:
+      - NODE_ENV=production
+      # - DATABASE_URL=postgres://user:password@db:5432/mydb # Ví dụ biến môi trường kết nối DB
+    depends_on:
+      - db # Đảm bảo service 'db' chạy trước khi chạy 'web'
+    networks:
+      - app-network # Gắn vào mạng chung
+
+  # Dịch vụ 2: Cơ sở dữ liệu PostgreSQL (Ví dụ thêm)
+  db:
+    image: postgres:15-alpine # Lấy image PostgreSQL có sẵn từ Docker Hub
+    container_name: mln_postgres_db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432" # Map cổng để bạn có thể dùng DBeaver/DataGrip kết nối vào
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Lưu trữ dữ liệu DB ra ngoài để không bị mất khi xóa container
+    networks:
+      - app-network # Gắn vào mạng chung để 'web' có thể nhìn thấy 'db'
+
+# Định nghĩa các ổ đĩa lưu trữ (Volumes)
+volumes:
+  pgdata: # Ổ đĩa lưu dữ liệu cho PostgreSQL
+
+# Định nghĩa mạng nội bộ (Networks)
+networks:
+  app-network:
+    driver: bridge # Mạng dạng cầu nối
